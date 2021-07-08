@@ -1,20 +1,21 @@
 def caesar_cipher(str, number)
-  number_from_letters = (97..122).to_a
-  number_from_upcase_letters=(65..90).to_a
-  arr = str.chars.map{|letter| letter.ord}
+  numbers_from_letters = (97..122).to_a
+  numbers_from_upcase_letters=(65..90).to_a
 
-  final =arr.map do |num|
-    if number_from_letters.include?(num)
-      index = number_from_letters.index(num) +number
-      number_from_letters[index%26]
-    elsif number_from_upcase_letters.include?(num)
-      index = number_from_upcase_letters.index(num) +number
-      number_from_upcase_letters[index%26]
+  numbers_from_input = str.chars.map{|letter| letter.ord}
+
+  encrypted =numbers_from_input.map do |num|
+    if numbers_from_letters.include?(num)
+      index = numbers_from_letters.index(num) +number
+      numbers_from_letters[index%26]
+    elsif numbers_from_upcase_letters.include?(num)
+      index = numbers_from_upcase_letters.index(num) +number
+      numbers_from_upcase_letters[index%26]
     else
       num
     end
   end
-  p final.map {|num| num.chr}.join
+  p encrypted.map {|num| num.chr}.join
 end
 
 caesar_cipher("What a string!", 5)
